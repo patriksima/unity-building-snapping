@@ -122,7 +122,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 2176228192197285556, guid: 6603d0d344b8c0445bd01d3efb6fc38f, type: 3}
-  allowedTags:
-  - Snap
   goodMaterial: {fileID: 2100000, guid: 4f9ce519ddf1d8f41a9ae741f7169d1d, type: 2}
   badMaterial: {fileID: 2100000, guid: 81dcc65419e7d5b4ab35c74ae506acfe, type: 2}

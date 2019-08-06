@@ -6,22 +6,17 @@ public class Preview : MonoBehaviour
 {
     public bool IsSnapped { get; private set; } = false;
 
-    [SerializeField]
-    private GameObject prefab;
-    [SerializeField]
-    private List<string> allowedTags = new List<string>();
-    [SerializeField]
-    private Material goodMaterial;
-    [SerializeField]
-    private Material badMaterial;
+    [SerializeField] private GameObject prefab;
+    [SerializeField] private Material goodMaterial;
+    [SerializeField] private Material badMaterial;
 
     private List<Collider> blocks = new List<Collider>();
     private List<Collider> snaps = new List<Collider>();
-    private MeshRenderer meshRenderer;
+    private MeshRenderer mesh;
 
     private void Awake()
     {
-        meshRenderer = GetComponent<MeshRenderer>();
+        mesh = GetComponent<MeshRenderer>();
         ChangeMaterial();
     }
 
@@ -45,7 +40,6 @@ public class Preview : MonoBehaviour
 
         Snap();
         ChangeMaterial();
-        //print("Enter " + other.tag + ": Blocks = " + blocks.Count + ", Snaps = " + snaps.Count);
     }
 
     private void OnTriggerExit(Collider other)
@@ -58,24 +52,22 @@ public class Preview : MonoBehaviour
 
         Snap();
         ChangeMaterial();
-        //print("Exit " + other.tag + ": Blocks = " + blocks.Count + ", Snaps = " + snaps.Count);
     }
 
     private void ChangeMaterial()
     {
         if (IsSnapped)
         {
-            meshRenderer.material = goodMaterial;
+            mesh.material = goodMaterial;
         }
         else
         {
-            meshRenderer.material = badMaterial;
+            mesh.material = badMaterial;
         }
     }
 
     public void Build()
     {
-        print("Build!");
         Instantiate(prefab, transform.position, transform.rotation);
         Destroy(gameObject);
     }
